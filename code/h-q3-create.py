@@ -1,15 +1,22 @@
 q3_create_cql = """
     CREATE TABLE IF NOT EXISTS song_listeners (
         song_title text,
-        session_id int,
-        item_in_session int,
+        user_id int,
         user_first_name text,
         user_last_name text,
-        PRIMARY KEY (
-            song_title,
-            session_id,
-            item_in_session
-        )
+        -- Note: This primary key may not be unique
+        -- across the entire dataset, because it is
+        -- possible for a user to listen to a song
+        -- more than once. Specifying the primary key
+        -- in this manner will lead to users appearing
+        -- only once in the results for a song, even
+        -- if they listened to it more than once,
+        -- since any further rows for that user-song
+        -- pair will overwrite the first one upon
+        -- insertion. It is not clear from the project
+        -- guidelines whether or not this is the
+        -- desired behavior.
+        PRIMARY KEY ((song_title), user_id)
     )
 """
 try:

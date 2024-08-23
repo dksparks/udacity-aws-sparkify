@@ -8,8 +8,7 @@ q2_create_cql = """
         user_first_name text,
         user_last_name text,
         PRIMARY KEY (
-            user_id,
-            session_id,
+            (user_id, session_id),
             item_in_session
         )
     )
