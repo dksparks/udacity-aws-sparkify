@@ -5,7 +5,7 @@ q1_create_cql = """
         artist text,
         song_title text,
         song_length float,
-        PRIMARY KEY (session_id, item_in_session)
+        PRIMARY KEY ((session_id), item_in_session)
     )
 """
 try:
