@@ -1,4 +1,9 @@
 q3_create_cql = """
+    -- This table tracks users who have listened
+    -- to each song. The song_title is used as the 
+    -- partition key to distribute data across nodes, 
+    -- and user_id is used as the clustering column 
+    -- to sort the result.
     CREATE TABLE IF NOT EXISTS song_listeners (
         song_title text,
         user_id int,
